@@ -142,7 +142,7 @@ void Player::ChangeState()
 	static const float SPEED_WALK_X = 400.0f;
 	static const float SPEED_SLIDE_X = 900.0f;
 	static const float SPEED_SLIDE_Y = 400.0f;
-	static const float SPEED_GRAVITY = 47.5f;
+	static const float SPEED_GRAVITY = 2500.0f;
 
 	int vertical = 0;
 	int horizontal = 0;
@@ -236,7 +236,7 @@ void Player::ChangeState()
 	else
 	{
 		// 연직 방향으로 중력 적용
-		m_curDirection.y = m_lastDirection.y - SPEED_GRAVITY;
+		m_curDirection.y = m_lastDirection.y - SPEED_GRAVITY / kepler::Application::Get()->GetWindow()->GetDisplayFrequency();
 		switch (m_state)
 		{
 		case ePlayerState::PlayerStateSlide:
@@ -327,7 +327,7 @@ void Player::OnUpdate(float deltaTime)
 	}
 	m_lastDeltaTime = deltaTime;
 	// 위치, 방향, 충돌체 및 애니메이션 갱신
-	m_position += m_curDirection * deltaTime;;
+	m_position += m_curDirection * deltaTime;
 	m_pCollider->SetSize(m_size);
 	m_pCollider->SetPosition(m_position);
 	m_lastDirection = m_curDirection;

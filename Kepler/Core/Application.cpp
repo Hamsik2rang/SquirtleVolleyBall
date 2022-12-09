@@ -77,7 +77,7 @@ namespace kepler {
 		{
 			float curTime = m_timer.Elapsed();
 			float deltaTime = curTime - lastTime;
-			if (deltaTime < 1.0f / 60.0f) 
+			if (deltaTime < 1.0f / static_cast<float>(m_pWindow->GetDisplayFrequency()))
 			{
 				continue; 
 			}

@@ -87,7 +87,7 @@ bool Enemy::MoveToTarget(const float targetX)
 {
 	// 목표 위치와 현재 위치의 거리가 m_targetXRange 이하면 좌우 입력 명령을 포기
 	float distance = GetPosition().x - targetX;
-	distance = distance < 0.0f ? distance * -1.0f : distance;
+	distance = (distance < 0.0f ? distance * -1.0f : distance)*0.1f;
 	if (distance <= m_targetXRange)
 	{
 		return false;
@@ -119,7 +119,7 @@ void Enemy::Logic()
 			if (m_pBall->GetPosition().y > (constant::NET_POSITION.y + constant::NET_SIZE.y) * 0.6f)
 			{
 				// 공x와 자신x가 멀 때
-				if (distance < m_pBall->GetSize().x)
+				if (distance > m_pBall->GetSize().x)
 				{
 					// 점프 및 스파이크하기
 					m_curInputs.push_back(kepler::key::Up);

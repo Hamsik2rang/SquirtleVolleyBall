@@ -38,6 +38,7 @@ namespace kepler {
 		inline virtual void SetVSync(bool isEnabled) override { m_data.bVSync = isEnabled; };
 		inline virtual bool IsVSync() const override { return m_data.bVSync; }
 		inline virtual HWND GetWindowHandle() const override { return m_hWnd; }
+		inline virtual DWORD GetDisplayFrequency() const { return kepler::GetDisplayFrequency(); }
 		
 		virtual inline void SetEventCallback(const EventCallbackFunc& callback) override { m_data.eventCallback = callback; };
 	};

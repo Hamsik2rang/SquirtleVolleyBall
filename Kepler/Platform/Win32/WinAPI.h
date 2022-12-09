@@ -15,4 +15,5 @@ namespace kepler {
 	LRESULT WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	INT_PTR CALLBACK About(HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam);
 	void ShowWindow(HWND hWnd);
+	DWORD GetDisplayFrequency();
 }

@@ -75,6 +75,18 @@ namespace kepler {
 		HACCEL hAccelTable = LoadAccelerators(g_hInst, MAKEINTRESOURCE(IDC_KEPLER));
 	}
 
+	DWORD GetDisplayFrequency()
+	{
+		DEVMODEA devMode{};
+
+		if (EnumDisplaySettingsA(nullptr, ENUM_CURRENT_SETTINGS, &devMode))
+		{
+			return devMode.dmDisplayFrequency;
+		}
+
+		return 0;
+	}
+
 	LRESULT WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
 		kepler::WindowData* data = reinterpret_cast<WindowData*>(::GetWindowLongPtr(hWnd, GWLP_USERDATA));
